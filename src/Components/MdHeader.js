@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function MdHeader({searchValue,searchChange,children}) {
     return (
         <div className='bg-stone-50 col-span-12 hidden md:flex justify-between h-16 items-center px-4 py-2'>
             <div className='flex gap-6 font-semibold w-1/2 text-slate-800 items-center'>
-                <img src="./img/logo1.png" className='rounded-2xl w-11 bg-purple-600' />
-                <a className='font-extrabold text-lg ml-8 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>خانه</a>
-                <a className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'> سبد خرید</a>
-                <a className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>صفحه مدیر</a>
+                <Link to={'/'}><img src="./img/logo.png" className='rounded-2xl w-11 bg-purple-600' /></Link>
+                <Link to={'/'} className='font-extrabold text-lg ml-8 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>خانه</Link>
+                <Link to={'adminpanel'} className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'> سبد خرید</Link>
+                <Link to={'cardproduct'} className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>صفحه مدیر</Link>
             </div>
             <div className='w-1/2 flex  justify-end '>
                 <div className='bg-stone-200 h-10 w-5/6 font-bold text-xs p-3 pr-12 rounded-lg relative'>

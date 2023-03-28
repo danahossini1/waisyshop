@@ -1,6 +1,7 @@
 import React, { useEffect, useState, memo } from 'react'
+import { Link } from 'react-router-dom'
 
-const Carts = ({name, price, groop, src1, color }) => {
+const Carts = ({name, price, groop, src1, color,url }) => {
 
     const [colors, setColors] = useState([])
 
@@ -31,7 +32,7 @@ const Carts = ({name, price, groop, src1, color }) => {
                 <p className='text-sm font-bold  cursor-default text-orange-700 text-end'>{price} تومان</p>
             </div>
             <div className='text-center'>
-                <button className='text-sm font-bold text-orange-400 p-2 mt-3 border-t-2'>مشاهده و سفارش</button>
+                <button className='text-sm font-bold text-orange-400 p-2 mt-3 border-t-2'><Link to={`category/${url}`}>مشاهده و سفارش</Link></button>
             </div>
         </div>
     )
