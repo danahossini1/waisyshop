@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import BottomBar from '../Components/BottomBar'
 import products from '../data'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 export default function Category() {
 
     let param = useParams()
     const [product, setProduct] = useState(...[...products.juc, ...products.oto, ...products.tee].filter(item => item.url === param.Cname))
-    console.log(product);
-    const [cartProduct, setCartProdect] = useState([])
 
-    useEffect(() => {
-        // localStorage.setItem('')
-        // setCartProdect(JSON.parse(localStorage.getItem('cart')))
-    }, [])
+
+    const notify = () => toast.success("محصول با موفقیت اضافه شد");
+
 
 
     const addToCart = () => {
@@ -25,22 +26,20 @@ export default function Category() {
             localData.map(item => {
                 if (item.product.id === product.id) {
                     item.number++
-                    // local.push(item)
                     localStorage.setItem('cart', JSON.stringify(local))
+                    console.log('yes');
                 } else {
-                    // local.push(product)
                     localStorage.setItem('cart', JSON.stringify([...localData, { product: product, number: 1 }]))
+                    console.log('no');
                 }
             })
-
-            console.log(localData);
-
+            
+            
         } else {
             localStorage.setItem('cart', JSON.stringify([{ product: product, number: 1 }]))
-            console.log('no');
+            console.log('nooo');
         }
-        // prod = [...cartProduct, product]
-        // console.log(prod);
+        notify()
     }
 
 
@@ -116,6 +115,8 @@ export default function Category() {
                             <h1 className='mt-5'>ارسال از : انبار جوانرود</h1>
                             <div className='flex justify-between mt-8 items-center'>
                                 <button onClick={addToCart} className='bg-orange-500 text-white rounded-xl p-3 px-6'>اضافه به سبد خرید</button>
+                                <ToastContainer position="bottom-left" theme="dark" autoClose={4000} rtl={true} />
+
                                 <p className='text-orange-600'>{`${product.price} تومان`}</p>
                             </div>
                         </div>
@@ -135,7 +136,7 @@ export default function Category() {
             </div>
             {/*  btm bar */}
             <div className='md:hidden'>
-            <BottomBar page=''/>
+                <BottomBar page='' />
             </div>
         </div>
     )
