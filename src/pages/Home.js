@@ -14,7 +14,7 @@ function Home() {
 
   const [openFilter, setOpenFilter] = useState('brand')
   const [filter, setFilter] = useState('all')
-  const [mdPage, setMdPage] = useState('home')
+
   const [category, setCategory] = useState('all')
   const [allproduct, setAllProduct] = useState([...products.juc, ...products.oto, ...products.tee].sort(() => 0.5 - Math.random()))
   const [showProduct, setShowProduct] = useState([])
@@ -49,9 +49,7 @@ function Home() {
     setFilter(id)
   }
 
-  const mdPagebar = (id) => {
-    setMdPage(id)
-  }
+
 
   const categoryShow = (id) => {
     setCategory(id)
@@ -93,7 +91,7 @@ function Home() {
 
 
 
-  },[searchValue])
+  }, [searchValue])
 
 
   return (
@@ -144,8 +142,25 @@ function Home() {
 
       </div>
       <div className={`${priceFilterShow ? 'fixed' : ' hidden'}   bg-white rounded-t-3xl bottom-0 left-0 right-0 p-4 z-30 h-1/2`}>
-        <Grooping filterProduct={filterProduct} filter={filter} flex={'col'} />
-        <button onClick={() => setPriceFilterShow(false)} className='bg-blue-700 mt-8 rounded-lg shadow-2xl text-sm shadow-slate-800 px-5 text-white p-2'>تایید</button>
+        <div className=' flex justify-between'>
+          <div className='w-1/2'>
+            <Grooping filterProduct={filterProduct} filter={filter} flex={'col'} />
+          </div>
+          <div className='flex flex-col w-1/2'>
+            <h1 className='text-orange-400 '>دسته بندی</h1>
+            <div onClick={() => { categoryShow('all') }} className={`mt-2 flex items-center cursor-pointer p-2 transition-all duration-500 ${category === 'all' ? 'text-slate-900 bg-purple-400 rounded-xl' : 'text-slate-400'} `} >
+              همه محصولات</div>
+            <div onClick={() => { categoryShow('juc') }} className={`mt-2 flex items-center cursor-pointer p-2 transition-all duration-500 ${category === 'juc' ? 'text-slate-900 bg-purple-400 rounded-xl' : 'text-slate-400'} `} >
+              آبمیوه‌گیری</div>
+            <div onClick={() => { categoryShow('oto') }} className={`mt-2 flex items-center cursor-pointer p-2 transition-all duration-500 ${category === 'oto' ? 'text-slate-900 bg-purple-400 rounded-xl' : 'text-slate-400'}`}>
+
+              اتو</div>
+            <div onClick={() => { categoryShow('tee') }} className={`mt-2 flex items-center cursor-pointer p-2 transition-all duration-500 ${category === 'tee' ? 'text-slate-900 bg-purple-400 rounded-xl' : 'text-slate-400'} `}>
+
+              چایی ساز</div>
+          </div>
+        </div>
+        <button onClick={() => setPriceFilterShow(false)} className='bg-blue-700 mt-8 rounded-lg shadow-2xl text-sm shadow-slate-800 px-7 text-white p-3'>تایید</button>
       </div>
 
       {/* md page */}
@@ -183,7 +198,7 @@ function Home() {
             <Grooping filterProduct={filterProduct} filter={filter} />
           </div>
 
-          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 relative'>
+          <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 relative'>
 
             {showProduct.length ?
               (category === 'all' ?
@@ -207,7 +222,7 @@ function Home() {
         </div>
       </div>
       {/* bottom bar */}
-      <BottomBar mdPage={mdPage} mdPagebar={mdPagebar} />
+      <BottomBar page='home' />
 
     </div>
 
