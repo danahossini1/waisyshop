@@ -4,6 +4,9 @@ import BottomBar from '../Components/BottomBar'
 import products from '../data'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { convertDigitsEnToFa } from 'persian-utilities';
+import { numericalSeparator } from 'persian-utilities';
+
 
 
 
@@ -11,11 +14,14 @@ export default function Category() {
 
     let param = useParams()
     const [product, setProduct] = useState(...[...products.juc, ...products.oto, ...products.tee].filter(item => item.url === param.Cname))
-
+    const [percent, setPercent] = useState((product.price * product.free) / 100)
 
     const notify = () => toast.success("محصول با موفقیت اضافه شد");
 
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    },[])
 
     const addToCart = () => {
         const localData = JSON.parse(localStorage.getItem('cart'))
@@ -33,8 +39,8 @@ export default function Category() {
                     console.log('no');
                 }
             })
-            
-            
+
+
         } else {
             localStorage.setItem('cart', JSON.stringify([{ product: product, number: 1 }]))
             console.log('nooo');
@@ -57,11 +63,18 @@ export default function Category() {
             </div>
             {/* md : header */}
             <div className='bg-stone-50 col-span-12 hidden md:flex justify-between h-16 items-center px-4 py-2'>
-                <div className='flex gap-6 font-semibold w-1/2 text-slate-800 items-center'>
+                <div className='flex gap-4 font-semibold w-1/2 text-slate-800 items-center'>
                     <Link to={'/'}><img src="/img/logo.png" className='rounded-2xl w-11 bg-purple-600' /></Link>
-                    <Link to={'/'} className='font-extrabold text-lg ml-8 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>خانه</Link>
-                    <Link to={'/cardproduct'} className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'> سبد خرید</Link>
-                    <Link to={'/adminpanel'} className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>صفحه مدیر</Link>
+
+                    <Link to={'/'} className='font-extrabold flex gap-2 text-lg ml-1 cursor-pointer hover:bg-slate-200 p-2 rounded-xl duration-500'> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                        خانه</Link>
+                    <Link to={'/cardproduct'} className='ml-2 flex gap-2 cursor-pointer hover:bg-slate-200 p-2 rounded-xl duration-500'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        </svg>
+                        سبد خرید</Link>
                 </div>
                 <div className='w-1/2 flex  justify-end  ml-5'>
                     <h1>{product.name}</h1>
@@ -116,8 +129,10 @@ export default function Category() {
                             <div className='flex justify-between mt-8 items-center'>
                                 <button onClick={addToCart} className='bg-orange-500 text-white rounded-xl p-3 px-6'>اضافه به سبد خرید</button>
                                 <ToastContainer position="bottom-left" theme="dark" autoClose={4000} rtl={true} />
-
-                                <p className='text-orange-600'>{`${product.price} تومان`}</p>
+                                <div>
+                                    {percent > 0 && <p className='text-sm text-end line-through text-stone-600'>{`${convertDigitsEnToFa(numericalSeparator(product.price.toString(), 3, ','))} تومان`}</p>}
+                                    <p className='text-orange-600'>{`${convertDigitsEnToFa(numericalSeparator((product.price - percent).toString(), 3, ','))} تومان`}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

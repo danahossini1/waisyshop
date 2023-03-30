@@ -30,6 +30,9 @@ function Home() {
 
 
   useEffect(() => {
+
+    window.scrollTo(0, 0);
+
     setShowProduct(allproduct)
   }, [])
 

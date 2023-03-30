@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import BottomBar from '../Components/BottomBar'
+import { convertDigitsEnToFa } from 'persian-utilities';
+import { numericalSeparator } from 'persian-utilities';
+
 
 export default function CardProduct() {
 
@@ -26,6 +29,7 @@ export default function CardProduct() {
   }
 
   useEffect(() => {
+      window.scrollTo(0, 0);
     setCartProdect(JSON.parse(localStorage.getItem('cart')))
     getLocal()
   }, [])
@@ -66,11 +70,18 @@ export default function CardProduct() {
       </div>
       {/* md : header */}
       <div className='bg-stone-50 col-span-12 hidden md:flex justify-between h-16 items-center px-4 py-2'>
-        <div className='flex gap-6 font-semibold w-1/2 text-slate-800 items-center'>
+        <div className='flex gap-4 font-semibold w-1/2 text-slate-800 items-center'>
           <Link to={'/'}><img src="/img/logo.png" className='rounded-2xl w-11 bg-purple-600' /></Link>
-          <Link to={'/'} className='font-extrabold text-lg ml-8 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>خانه</Link>
-          <Link to={'/cardproduct'} className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'> سبد خرید</Link>
-          <Link to={'/adminpanel'} className='ml-2 cursor-pointer hover:bg-slate-200 p-2 px-4 rounded-xl duration-500'>صفحه مدیر</Link>
+
+          <Link to={'/'} className='font-extrabold flex gap-2 text-lg ml-1 cursor-pointer hover:bg-slate-200 p-2 rounded-xl duration-500'> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+          </svg>
+            خانه</Link>
+          <Link to={'/cardproduct'} className='ml-2 flex gap-2 cursor-pointer hover:bg-slate-200 p-2 rounded-xl duration-500'>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            سبد خرید</Link>
         </div>
         <div className='w-1/2 flex  justify-end  ml-5'>
           {/* <h1></h1> */}
@@ -97,8 +108,8 @@ export default function CardProduct() {
                       </div>
                       <div className='flex justify-between items-end'>
                         <div>
-                          <h1 className='text-orange-500 text-xs'><span className='text-[11px] text-gray-500'>قیمت : </span>{item.product.price} تومان</h1>
-                          <h1 className='text-orange-500 text-sm'><span className='text-[11px] text-gray-500'>جمع کل : </span>{item.product.price * item.number} تومان</h1>
+                          <h1 className='text-orange-500 text-xs'><span className='text-[11px] text-gray-500'>قیمت : </span>{convertDigitsEnToFa(numericalSeparator(item.product.price.toString(), 3, ','))} تومان</h1>
+                          <h1 className='text-orange-500 text-sm'><span className='text-[11px] text-gray-500'>جمع کل : </span>{convertDigitsEnToFa(numericalSeparator((item.product.price * item.number).toString(), 3, ','))} تومان</h1>
                         </div>
                         <div className='flex'>
                           <p className='text-sm ml-2'>تعداد :  </p>
@@ -111,7 +122,7 @@ export default function CardProduct() {
                       </div>
                     </div>
                   </div>)
-
+ 
               }
             </div>
             <div className='mt-8 p-2 md:w-1/2'>

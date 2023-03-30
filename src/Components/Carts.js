@@ -1,5 +1,7 @@
 import React, { useEffect, useState, memo } from 'react'
 import { Link } from 'react-router-dom'
+import { convertDigitsEnToFa } from 'persian-utilities';
+import { numericalSeparator } from 'persian-utilities';
 
 const Carts = ({ name, price, groop, src1, color, url, free }) => {
 
@@ -37,8 +39,8 @@ const Carts = ({ name, price, groop, src1, color, url, free }) => {
                     <h2 className='text-sm my-4 h-10 font-semibold'>{name}</h2>
                 </Link>
                 <div className='h-8 flex flex-col justify-end'>
-                    {free !== 0 && <p className='text-xs line-through font-bold  cursor-default text-stone-500 text-end'>{price} تومان</p>}
-                    <p className='text-sm font-bold  cursor-default text-orange-700 text-end'>{price - frees} تومان</p>
+                    {free !== 0 && <p className='text-xs line-through font-bold  cursor-default text-stone-500 text-end'>{convertDigitsEnToFa(numericalSeparator(price.toString(), 3, ','))} تومان</p>}
+                    <p className='text-sm font-bold  cursor-default text-orange-700 text-end'>{convertDigitsEnToFa(numericalSeparator((price - frees).toString(), 3, ','))} تومان</p>
                 </div>
             </div>
             <Link to={`category/${url}`}>
