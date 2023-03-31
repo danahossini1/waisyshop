@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function MdHeader({ searchValue, searchChange, children }) {
     return (
-        <div className='bg-stone-50 col-span-12 hidden md:flex justify-between h-16 items-center px-4 py-2'>
+        <div className='bg-stone-50 shadow-lg col-span-12 hidden md:flex justify-between h-16 items-center px-4 py-2'>
             <div className='flex gap-4 font-semibold w-1/2 text-slate-800 items-center'>
                 <Link to={'/'}><img src="./img/logo.png" className='rounded-2xl w-11 bg-purple-600' /></Link>
 

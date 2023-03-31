@@ -13,7 +13,7 @@ const products = {
 
         { id: 1, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic504', name: 'آبمیوه‌گیری دیجیتال گوسونیک مدل 504', src1: '/img/wysi/a-go-504.jpg', src2: ['/img/wysi/a-go-504-1.jpg', '/img/wysi/a-go-504-2.jpg'], price: 2750000, free: 10, detailes: 'آبمیوه‌گیری ۴کاره دیجیتال گوسونیک مدل GSJ_504 با قدرت موتور عالی و ظاهر بسیار زیبا', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
 
-        { id: 2, brand: 'bosch', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-bosch1288', name: 'آبمیوه‌گیری‌بوش(bosch) چهار کاره مدل 1288 ', src1: '/img/wysi/a-bo-1288.jpg', src2: ['/img/wysi/a-bo-1288-1.jpg', '/img/wysi/a-bo-1288-2.jpg', '/img/wysi/a-bo-1288-3.jpg'], price: 2200000, free: 0, detailes: 'آبمیوه‌گیری‌بوش(Bosch )چهار کاره مدل 1288', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
+        { id: 2, brand: 'bosch', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-bosch1288', name: 'آبمیوه‌گیری‌بوش چهار کاره مدل 1288 ', src1: '/img/wysi/a-bo-1288.jpg', src2: ['/img/wysi/a-bo-1288-1.jpg', '/img/wysi/a-bo-1288-2.jpg', '/img/wysi/a-bo-1288-3.jpg'], price: 2200000, free: 0, detailes: 'آبمیوه‌گیری‌بوش(Bosch )چهار کاره مدل 1288', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
 
 
         { id: 3, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic724', name: 'آبیموه‌گیری گوسونیک مدلGSJ_724', src1: '/img/wysi/a-go-724.jpg', src2: ['/img/wysi/a-go-724-1.jpg', '/img/wysi/a-go-724-2.jpg', '/img/wysi/a-go-724-3.jpg'], price: 2480000, free: 8, detailes: 'آبمیوه گیر 4 کاره گوسونیک مدل GSJ-724 ا Juicer Gosonic 724', color: ['blue', 'green', 'orange', 'purple'] },
