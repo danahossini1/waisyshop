@@ -11,21 +11,21 @@ const products = {
     ],
     juc: [
 
-        { id: 1, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic504', name: 'آبمیوه‌گیری دیجیتال گوسونیک مدل 504', src1: '/img/wysi/a-go-504.jpg', src2: ['/img/wysi/a-go-504-1.jpg', '/img/wysi/a-go-504-2.jpg'], price: 2750000, free: 10, detailes: 'آبمیوه‌گیری ۴کاره دیجیتال گوسونیک مدل GSJ_504 با قدرت موتور عالی و ظاهر بسیار زیبا', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
+        { id: 1, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic504', name: 'آبمیوه‌گیری دیجیتال گوسونیک مدل 504', src1: '/img/wysi/a-go-504.jpg', src2: ['/img/wysi/a-go-504-1.jpg', '/img/wysi/a-go-504-2.jpg'], price: 2750000, free: 10, detailes: 'آبمیوه‌گیری ۴کاره دیجیتال گوسونیک مدل GSJ_504 با قدرت موتور عالی و ظاهر بسیار زیبا ابمیوه ', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
 
-        { id: 2, brand: 'bosch', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-bosch1288', name: 'آبمیوه‌گیری‌بوش چهار کاره مدل 1288 ', src1: '/img/wysi/a-bo-1288.jpg', src2: ['/img/wysi/a-bo-1288-1.jpg', '/img/wysi/a-bo-1288-2.jpg', '/img/wysi/a-bo-1288-3.jpg'], price: 2200000, free: 0, detailes: 'آبمیوه‌گیری‌بوش(Bosch )چهار کاره مدل 1288', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
-
-
-        { id: 3, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic724', name: 'آبیموه‌گیری گوسونیک مدلGSJ_724', src1: '/img/wysi/a-go-724.jpg', src2: ['/img/wysi/a-go-724-1.jpg', '/img/wysi/a-go-724-2.jpg', '/img/wysi/a-go-724-3.jpg'], price: 2480000, free: 8, detailes: 'آبمیوه گیر 4 کاره گوسونیک مدل GSJ-724 ا Juicer Gosonic 724', color: ['blue', 'green', 'orange', 'purple'] },
+        { id: 2, brand: 'bosch', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-bosch1288', name: 'آبمیوه‌گیری‌بوش چهار کاره مدل 1288 ', src1: '/img/wysi/a-bo-1288.jpg', src2: ['/img/wysi/a-bo-1288-1.jpg', '/img/wysi/a-bo-1288-2.jpg', '/img/wysi/a-bo-1288-3.jpg'], price: 2200000, free: 0, detailes: 'آبمیوه‌گیری‌بوش(Bosch )چهار کاره مدل 1288 ابمیوه ', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
 
 
-        { id: 4, brand: 'unic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-unic4', name: 'آبمیوه گیری 4 کاره یونیک(Unique)', src1: '/img/wysi/a-un.jpg', src2: [''], price: 2500000, free: 0, detailes: 'آبمیوه گیری 4 کاره یونیک(Unique)۱۲۰۰وات مدل:UN643', color: ['blue', 'gray', 'green', 'orange'] },
+        { id: 3, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic724', name: 'آبیموه‌گیری گوسونیک مدلGSJ_724', src1: '/img/wysi/a-go-724.jpg', src2: ['/img/wysi/a-go-724-1.jpg', '/img/wysi/a-go-724-2.jpg', '/img/wysi/a-go-724-3.jpg'], price: 2480000, free: 8, detailes: 'آبمیوه گیر 4 کاره گوسونیک مدل GSJ-724 ا Juicer Gosonic 724 ابمیوه ', color: ['blue', 'green', 'orange', 'purple'] },
 
 
-        { id: 5, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic732', name: 'آبمیوه گیری چند کاره گوسونیک مدل GSJ-732', src1: '/img/wysi/a-go-732.png', src2: ['/img/wysi/a-go-732-1.png'], price: 2750000, free: 10, detailes: 'آبمیوه گیری چهار کاره گوسونیک مدل GSJ-732', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
+        { id: 4, brand: 'unic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-unic4', name: 'آبمیوه گیری 4 کاره یونیک(Unique)', src1: '/img/wysi/a-un.jpg', src2: [''], price: 2500000, free: 0, detailes: 'آبمیوه گیری 4 کاره یونیک(Unique)۱۲۰۰وات مدل:UN643 ابمیوه ', color: ['blue', 'gray', 'green', 'orange'] },
 
 
-        { id: 6, brand: 'foma', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-foma1991', name: 'آبمیوه گیری 4 کاره فوما مدل FU-1991', src1: '/img/wysi/a-fo-1991.jpg', src2: ['/img/wysi/a-fo-1991-1.jpg', '/img/wysi/a-fo-1991-2.jpg'], price: 1950000, free: 15, detailes: 'آبمیوه گیری 4 کاره فوما مدل FU-1991', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
+        { id: 5, brand: 'gosonic', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-gosonic732', name: 'آبمیوه گیری چند کاره گوسونیک مدل GSJ-732', src1: '/img/wysi/a-go-732.png', src2: ['/img/wysi/a-go-732-1.png'], price: 2750000, free: 10, detailes: 'آبمیوه گیری چهار کاره گوسونیک مدل GSJ-732 ابمیوه ', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
+
+
+        { id: 6, brand: 'foma', grop: 'juc', groop: 'آبمیوه گیری', url: 'juicer-foma1991', name: 'آبمیوه گیری 4 کاره فوما مدل FU-1991', src1: '/img/wysi/a-fo-1991.jpg', src2: ['/img/wysi/a-fo-1991-1.jpg', '/img/wysi/a-fo-1991-2.jpg'], price: 1950000, free: 15, detailes: 'آبمیوه گیری 4 کاره فوما مدل FU-1991 ابمیوه ', color: ['blue', 'gray', 'green', 'orange', 'purple'] },
 
     ],
     oto: [

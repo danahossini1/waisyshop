@@ -67,6 +67,7 @@ export default function CardProduct() {
       navigate('/')
     }
       , 2000);
+
   }
 
 
@@ -85,7 +86,7 @@ export default function CardProduct() {
 
   return (
     <>
-      <div className='bg-gray-100 mi:px-2 font-bold pb-6 '>
+      <div className='bg-gray-100 min-h-screen mi:px-2 font-bold pb-6 '>
         {/* sm : header */}
         <div className='flex md:hidden justify-between items-center  px-4 pt-8'>
           <Link to='/'><div className='bg-white rounded-xl p-2 cursor-pointer' >
@@ -190,6 +191,7 @@ export default function CardProduct() {
             :
 
             <div className='h-screen text-center w-full '>
+
               <div className=' mt-20 flex bg-red-300 items-center p-4 rounded-xl shadow-lg justify-between'>
 
                 <div></div>
@@ -213,7 +215,7 @@ export default function CardProduct() {
         </div>
       </div>
       <Footer />
-      <ToastContainer position="bottom-left" theme="dark" autoClose={2000} rtl={true} />
+      <ToastContainer position="top-left" theme="dark" autoClose={2000} rtl={true} />
 
     </>
   )

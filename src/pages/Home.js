@@ -9,6 +9,8 @@ import BottomBar from '../Components/BottomBar';
 import Grooping from '../Components/Grooping';
 import SearchCart from '../Components/SearchCart';
 import Footer from '../Components/Footer';
+import { convertDigitsFaToEn } from 'persian-utilities';
+
 
 
 function Home() {
@@ -28,6 +30,11 @@ function Home() {
   const [filterMinPrice, setFilterMinPrice] = useState(null)
   const [filterMaxPrice, setFilterMaxPrice] = useState(null)
   const [filterMark, setFilterMark] = useState([])
+  const [loadPage, setLoadPage] = useState(false)
+
+  const loadimg = () => {
+    setLoadPage(true)
+  }
 
 
   useEffect(() => {
@@ -36,7 +43,6 @@ function Home() {
 
     setShowProduct(allproduct)
   }, [])
-
 
 
 
@@ -65,7 +71,7 @@ function Home() {
     let allprod = allproduct
 
     if (filterMaxPrice && filterMaxPrice.length) {
-      allprod = allproduct.filter(item => (filterMinPrice !== null ? item.price > 0 : item.price > filterMinPrice) && item.price < filterMaxPrice)
+      allprod = allproduct.filter(item => (filterMinPrice !== null ? item.price > 0 : item.price > filterMinPrice) && item.price < convertDigitsFaToEn(filterMaxPrice.toString()))
 
     }
 
@@ -85,23 +91,19 @@ function Home() {
 
     setSearchValue(e.target.value)
 
-    let product = allproduct.filter(item => item.name.includes(searchValue))
+    let product = allproduct.filter(item => item.detailes.includes(searchValue))
     setSearchProduct(product)
 
     if (searchValue.length < 2) {
       setSearchProduct([])
     }
-
-
-
-
   }, [searchValue])
 
   return (
-    <>
-      <div className='bg-gray-100 px-6 font-bold pb-8 '>
+    < div className='relative' >
+      <div className='bg-gray-100 min-h-screen px-6 font-bold pb-8 relative'>
         {/* header */}
-        <div className={`${isSearchShow ? 'absolute -translate-x-0' : 'hidden'} -translate-x-[600px] top-5 right-1  z-30 bg-stone-200 h-12 w-5/6 font-bold text-xs p-3 pr-10 rounded-lg `}>
+        <div className={`${isSearchShow ? 'absolute ' : 'hidden'}  top-5 right-1  z-30 bg-stone-200 h-12 w-5/6 font-bold text-xs p-3 pr-10 rounded-lg `}>
           <svg className='absolute right-2' width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path className='text-slate-800' d="M9.58317 17.4998C13.9554 17.4998 17.4998 13.9554 17.4998 9.58317C17.4998 5.21092 13.9554 1.6665 9.58317 1.6665C5.21092 1.6665 1.6665 5.21092 1.6665 9.58317C1.6665 13.9554 5.21092 17.4998 9.58317 17.4998Z" stroke="#222F5D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             <path d="M18.3332 18.3332L16.6665 16.6665" stroke="#222F5D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -202,35 +204,47 @@ function Home() {
               <Grooping filterProduct={filterProduct} filter={filter} />
             </div>
 
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 relative'>
-
-              {showProduct.length ?
-                (category === 'all' ?
-                  (filter === 'all' && showProduct.map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'expensive' && showProduct.sort((a, b) => a.price - b.price).reverse().map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'inexpensive' && showProduct.sort((a, b) => a.price - b.price).map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'popular' && showProduct.sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'visited' && showProduct.sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} /> }))
+            <div className=' relative pb-24 '>
+              <div className={`${loadPage && 'hidden'} text-center mt-16`} role="status">
+                <svg aria-hidden="true" className="inline w-16 h-16 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-orange-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                </svg>
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div className={`${loadPage ? 'grid' : 'hidden'}  grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4`}>
+                {showProduct.length ?
+                  (category === 'all' ?
+                    (filter === 'all' && showProduct.map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> })) ||
+                    (filter === 'expensive' && showProduct.sort((a, b) => a.price - b.price).reverse().map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> })) ||
+                    (filter === 'inexpensive' && showProduct.sort((a, b) => a.price - b.price).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> })) ||
+                    (filter === 'popular' && showProduct.sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> })) ||
+                    (filter === 'visited' && showProduct.sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }))
+                    :
+                    (filter === 'all' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
+                    (filter === 'expensive' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).reverse().map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
+                    (filter === 'inexpensive' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
+                    (filter === 'popular' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
+                    (filter === 'visited' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)
+                  )
                   :
-                  (filter === 'all' && showProduct.filter(product => product.grop === category).map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'expensive' && showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).reverse().map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'inexpensive' && showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'popular' && showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} /> })) ||
-                  (filter === 'visited' && showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} /> }))
-                  // showProduct.filter(product => product.grop === category).map((item, index) => { return <Carts key={index} {...item} /> }))
-                )
-                :
-                (<h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)
-              }
+                  (<div>
+
+                    <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>
+                  </div>)
+                }
+              </div>
             </div>
           </div>
         </div>
         {/* bottom bar */}
         <BottomBar page='home' />
-
+        <div className='absolute bottom-0 z-0 left-0 right-0'>
+          <Footer />
+        </div>
       </div>
-      <Footer />
-    </>
+
+    </div >
 
   );
 }

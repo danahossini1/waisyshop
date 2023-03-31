@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import { convertDigitsEnToFa } from 'persian-utilities';
 import { numericalSeparator } from 'persian-utilities';
 
-const Carts = ({ name, price, groop, src1, color, url, free }) => {
+const Carts = ({ name, price, groop, src1, color, url, free,loadimg }) => {
 
     const [colors, setColors] = useState([])
     const [frees, setFrees] = useState(price * free / 100)
-    console.log(frees);
 
     useEffect(() => {
         setColors(color.sort(() => 0.5 - Math.random()))
@@ -23,7 +22,7 @@ const Carts = ({ name, price, groop, src1, color, url, free }) => {
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M8.14091 4.48968C9.28571 3.41685 11.1417 3.41685 12.2865 4.48968C13.4314 5.56257 13.4314 7.30211 12.2865 8.375L8.11391 12.2853C7.99332 12.3983 7.79787 12.3983 7.67729 12.2853L3.50465 8.375C2.35978 7.30211 2.35978 5.56257 3.50465 4.48968C4.64945 3.41685 6.50548 3.41685 7.65028 4.48968L7.8956 4.71957L8.14091 4.48968Z" fill="#FF755C" />
                         </svg>
                     </div>
-                    <img src={src1} className='rounded-xl h-full w-full' />
+                    <img src={src1} onLoad={loadimg} className='rounded-xl h-full w-full' />
                 </div>
             </Link>
             <div className='px-2'>

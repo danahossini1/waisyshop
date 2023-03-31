@@ -130,7 +130,7 @@ export default function Category() {
                                 <h1 className='mt-5'>ارسال از : انبار جوانرود</h1>
                                 <div className='flex justify-between mt-8 items-center'>
                                     <button onClick={addToCart} className='bg-orange-500 text-white rounded-xl p-3 text-sm mi:text-base md:text-sm lg:text-base px-2 mi:px-6'>اضافه به سبد خرید</button>
-                                    <ToastContainer position="bottom-left" theme="dark" autoClose={4000} rtl={true} />
+                                    <ToastContainer position="top-left" theme="dark" autoClose={4000} rtl={true} />
                                     <div>
                                         {percent > 0 && <p className='text-xs mi:text-sm md:text-xs lg:text-sm text-end line-through text-stone-600'>{`${convertDigitsEnToFa(numericalSeparator(product.price.toString(), 3, ','))} تومان`}</p>}
                                         <p className='text-orange-600 text-sm mi:text-base md:text-sm lg:text-base'>{`${convertDigitsEnToFa(numericalSeparator((product.price - percent).toString(), 3, ','))} تومان`}</p>
