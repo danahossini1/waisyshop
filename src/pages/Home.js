@@ -143,11 +143,11 @@ function Home() {
           setIsSearchShow(false)
         }} className={`${brandFilterShow || priceFilterShow || isSearchShow ? 'fixed' : 'hidden'}   fixed bg-neutral-600 opacity-60 botton-0 top-0 left-0 right-0 h-full z-20 `}>
         </div>
-        <div className={`${brandFilterShow ? 'fixed' : ' hidden'}  bg-white  rounded-t-3xl bottom-0 left-0 right-0 p-4 z-30 h-2/3 mi:h-1/2`}>
+        <div className={`${brandFilterShow ? 'fixed' : ' hidden'}  bg-white  rounded-t-3xl bottom-0 left-0 right-0 p-4 z-30 h-2/3 `}>
           <Filter openFilter={openFilter} filterShow={filterShow} filterMinPrice={filterMinPrice} setFilterMinPrice={setFilterMinPrice} filterMaxPrice={filterMaxPrice} setFilterMaxPrice={setFilterMaxPrice} filterAction={filterAction} setFilterMark={setFilterMark} filterMark={filterMark} />
 
         </div>
-        <div className={`${priceFilterShow ? 'fixed' : ' hidden'}   bg-white rounded-t-3xl bottom-0 left-0 right-0 p-4 z-30 h-1/2`}>
+        <div className={`${priceFilterShow ? 'fixed' : ' hidden'}   bg-white rounded-t-3xl bottom-0 left-0 right-0 p-4 z-30 h-2/3`}>
           <div className=' flex justify-between'>
             <div className=''>
               <Grooping filterProduct={filterProduct} filter={filter} flex={'col'} />
@@ -221,11 +221,11 @@ function Home() {
                     (filter === 'popular' && showProduct.sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> })) ||
                     (filter === 'visited' && showProduct.sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }))
                     :
-                    (filter === 'all' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
-                    (filter === 'expensive' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).reverse().map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
-                    (filter === 'inexpensive' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
-                    (filter === 'popular' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>) ||
-                    (filter === 'visited' && showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)
+                    (filter === 'all' && (showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)) ||
+                    (filter === 'expensive' && (showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).reverse().map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)) ||
+                    (filter === 'inexpensive' && (showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort((a, b) => a.price - b.price).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)) ||
+                    (filter === 'popular' && (showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>)) ||
+                    (filter === 'visited' && (showProduct.filter(product => product.grop === category).length ? showProduct.filter(product => product.grop === category).sort(() => 0.5 - Math.random()).map((item, index) => { return <Carts key={index} {...item} loadimg={loadimg} /> }) : <h1 className='bg-red-600 rounded-3xl w-full absolute top-10 text-center text-2xl py-5 '> هیج محصولی یافت نشد</h1>))
                   )
                   :
                   (<div>

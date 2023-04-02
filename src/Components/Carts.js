@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 import { convertDigitsEnToFa } from 'persian-utilities';
 import { numericalSeparator } from 'persian-utilities';
 
-const Carts = ({ name, price, groop, src1, color, url, free,loadimg }) => {
+const Carts = ({ name, price, groop, src1, color, url, free, loadimg }) => {
 
-    const [colors, setColors] = useState([])
-    const [frees, setFrees] = useState(price * free / 100)
+    const [colors, setColors] = useState([color.sort(() => 0.5 - Math.random())])
+    const [frees, setFrees] = useState(0)
 
     useEffect(() => {
         setColors(color.sort(() => 0.5 - Math.random()))
+        setFrees(price * free / 100)
     })
 
     return (
@@ -30,7 +31,7 @@ const Carts = ({ name, price, groop, src1, color, url, free,loadimg }) => {
                     <p className='text-[10px] mi:text-xs cursor-default text-gray-400 font-medium'>{groop}</p>
                     <div className='flex relative'>
                         {colors.map((color, index) =>
-                            <div key={index} className={`h-[14px] w-[14px] -mr-[5px] border rounded-full bg-${color}-600 `}></div>
+                            <div key={index} className={`h-[14px] w-[14px] -mr-[5px] border rounded-full ${color} `}></div>
                         )}
                     </div>
                 </div>
