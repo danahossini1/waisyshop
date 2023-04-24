@@ -29,17 +29,29 @@ export default function Category() {
 
         if (localData) {
 
+            const filterProduct = localData.filter(item => item.product.id === product.id)
+
             let local = [...localData]
-            localData.map(item => {
-                if (item.product.id === product.id) {
-                    item.number++
-                    localStorage.setItem('cart', JSON.stringify(local))
-                    console.log('yes');
-                } else {
-                    localStorage.setItem('cart', JSON.stringify([...localData, { product: product, number: 1 }]))
-                    console.log('no');
-                }
-            })
+
+
+
+            if (filterProduct.length) {
+                local.map(item => {
+
+                    if (item.product.id === filterProduct[0].product.id) {
+                        console.log(filterProduct);
+                        item.number += 1
+                        localStorage.setItem('cart', JSON.stringify(local))
+                    }
+                })
+
+            }
+            else {
+                
+                localStorage.setItem('cart', JSON.stringify([...localData, { product: product, number: 1 }]))
+                console.log('no');
+            }
+
 
 
         } else {
