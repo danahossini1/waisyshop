@@ -5,13 +5,13 @@ import { numericalSeparator } from 'persian-utilities';
 
 const Carts = ({ name, price, groop, src1, color, url, free, loadimg }) => {
 
-    const [colors, setColors] = useState([color.sort(() => 0.5 - Math.random())])
+    const [colors, setColors] = useState([])
     const [frees, setFrees] = useState(0)
 
     useEffect(() => {
         setColors(color.sort(() => 0.5 - Math.random()))
         setFrees(price * free / 100)
-    })
+    },[])
 
     return (
         <div className='bg-white w-fit mt-5 rounded-xl relative shadow-lg' >
